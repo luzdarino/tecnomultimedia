@@ -25,7 +25,7 @@ rect(0,300,400,300);
 fill(#F8FF48);
 circle(320,70,80);
 
-//reja
+//cerca de madera
 strokeWeight(4);
 stroke(#431F09);
 line(0,260,400,260);
@@ -45,7 +45,7 @@ line(320,260,320,310);
 line(350,260,350,310);
 line(380,260,380,310);
 
-//coso metálico
+//caño metálico de la camioneta
 strokeWeight(4);
 stroke(100);
 line(210,245,140,310);
