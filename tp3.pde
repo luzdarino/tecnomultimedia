@@ -1,9 +1,9 @@
 //https://youtu.be/tDooI6Oz8xk
-PImage fondo, ballena, paredes, inicio, boton, pared1, pared2, perdiste, ganaste, botonjugar, instrucciones, textganaste, botoncredito, creditos, reiniciar,titulo,botonreinicioganaste;
+PImage fondo, ballena, paredes, inicio, boton, pared1, pared2, perdiste, ganaste, botonjugar, instrucciones, textganaste, botoncredito, creditos, reiniciar, titulo, botonreinicioganaste;
 int fondox, fondoy, balX, balY, gravedad, velY, score;
 //int distX[] = new int[2], distY[]= new int [2];
 int[]paredX, paredY, posY, posX, tamY, tamX;
-String estado, instructivo, controles,creadores,alumnos,directorejecutivo,profesor,fuentes;
+String estado, instructivo, controles, creadores, alumnos, directorejecutivo, profesor, fuentes;
 
 
 void setup() {
@@ -46,37 +46,36 @@ void setup() {
     paredX [i] = width+200*i;
     paredY [i] = (int)random(-350, 0);
   }
-  posX=new int[5];
-  posY=new int[5];
-  tamY=new int[5];
-  tamX=new int[5];
-  posX[1]=210;
-  posY[1]=70;
-  tamX[1]=380;
-  tamY[1]=140;
+  //posX=new int[5];
+  //posY=new int[5];
+  //tamY=new int[5];
+  //tamX=new int[5];
+  //posX[1]=210;
+  //posY[1]=70;
+  //tamX[1]=380;
+  //tamY[1]=140;
 
-  posX[2]=260;
-  posY[2]=410;
-  tamX[2]=280;
-  tamY[2]=100;
+  //posX[2]=260;
+  //posY[2]=410;
+  //tamX[2]=280;
+  //tamY[2]=100;
 
-  posX [3]=550;
-  posY [3]=420;
-  tamX [3]=300;
-  tamY [3]=120;
-
+  //posX [3]=550;
+  //posY [3]=420;
+  //tamX [3]=300;
+  //tamY [3]=120;
 }
 
 void draw() {
   //estados
   if ( estado=="iniciar" ) {
     image(inicio, 0, 0);
-    miBotonRectangular();
+    miBotonRectangular(210, 210+ 380, 70, 300 + 120);
     image(boton, 200, 60);   
-    image(titulo,200,400);
+    image(titulo, 200, 400);
     strokeWeight(4);
     stroke(255);
-    line(200,445,700,445);
+    line(200, 445, 700, 445);
     // miBotonRectangular(20, 20, 30, 30);
   } else if ( estado=="instrucciones" ) {
     image(inicio, 0, 0);
@@ -95,8 +94,7 @@ void draw() {
     fill(255);
     textSize(40);
     textAlign( CENTER, CENTER );
-
-    miBotonRectangular1();
+    miBotonRectangular(260, 260+280, 410, 410+100);
     //IMAGEN BOTON JUGAR
     image(botonjugar, 250, 400);
     image(instrucciones, 250, 140);
@@ -113,11 +111,11 @@ void draw() {
   } else if (estado=="Ganaste") {
     image(ganaste, 0, 0);
     image(textganaste, 165, 70);
-    miBotonRectangular2();
-    image(botoncredito,490, 420);
+    miBotonRectangular(550, 530+300, 420, 420+120);
+    image(botoncredito, 490, 420);
   } else if (estado =="creditos") {
     background (#3956E3);
-    image(botonreinicioganaste,260,400);
+    image(botonreinicioganaste, 260, 400);
     pushMatrix();
     textAlign (CENTER, CENTER);
     textSize(50);
@@ -137,9 +135,8 @@ void draw() {
     textAlign (CENTER, CENTER);
     textSize(30);
     text(profesor, 400, 300);
-    text("Comision 2",400,350);
+    text("Comision 2", 400, 350);
     popMatrix();
-
   }
 }
 /*void botonReiniciar() {
@@ -148,35 +145,33 @@ void draw() {
  }
  }*/
 void mousePressed() {
-  if ((mouseX> posX[1]) && (mouseX< posX[1] + tamX[1]) && (mouseY> posY[1]) && (mouseY< posY[1] + tamY[1])) {
+  if ((mouseX>210) && (mouseX<210+ 380)&& (mouseY>70)&&( mouseY<300 + 120)) {
     estado="instrucciones";
-  } else if ((mouseX> posX[2]) && (mouseX< posX[2] + tamX[2]) && (mouseY> posY[2]) && (mouseY< posY[2] + tamY[2])) {
+  } else if ((mouseX> 260) && (mouseX< 260+280 ) && (mouseY>  410) && (mouseY<  410+100)) {
     estado = "jugar";
-  } else if ((mouseX> posX[3]) && (mouseX< posX[3] + tamX[3]) && (mouseY> posY[3]) && (mouseY< posY[3] + tamY[3])) {
+  } else if ((mouseX> 550) && (mouseX< 530+300) && (mouseY>420) && (mouseY<  420+120)) {
     estado="creditos";
-  } else if ((mouseX> posX[4]) && (mouseX< posX[4] + tamX[4]) && (mouseY> posY[4]) && (mouseY< posY[4] + tamY[4])) {
-    estado="iniciar";
-  }
+  } 
   // funcion para que la ballena salte
-  // velY=-15;
+ // velY=-15;
 }
 void keyPressed() {
   if (key==' ');
   velY=-15;
   //REINICIAR
-  if(key=='r'){
-  estado="iniciar";
-  score=0;
-  balY = 50;
-  balX=100;
-  gravedad= 1;
-  //arreglo para las paredes
-  paredX= new int [5] ;
-  paredY = new int [paredX.length];
-  for (int i= 0; i< paredX.length; i++) {
-    paredX [i] = width+200*i;
-    paredY [i] = (int)random(-350, 0);
-  }
+  if (key=='r') {
+    estado="iniciar";
+    score=0;
+    balY = 50;
+    balX=100;
+    gravedad= 1;
+    //arreglo para las paredes
+    paredX= new int [5] ;
+    paredY = new int [paredX.length];
+    for (int i= 0; i< paredX.length; i++) {
+      paredX [i] = width+200*i;
+      paredY [i] = (int)random(-350, 0);
+    }
   }
 }
 //FONDO
@@ -222,18 +217,10 @@ void ballena() {
 }
 
 //BOTON INICIO
-void  miBotonRectangular() {
-  if ((mouseX> posX[1]) && (mouseX< posX[1] + tamX[1]) && (mouseY> posY[1]) && (mouseY< posY[1] + tamY[1])) {
-    //rect(posX[1], posY[1], tamX[1], tamY[1]);
-  }
-}
-void  miBotonRectangular1() {
-  if ((mouseX> posX[2]) && (mouseX< posX[2] + tamX[2]) && (mouseY> posY[2]) && (mouseY< posY[2] + tamY[2])) {
-    //rect(posX[2], posY[2], tamX[2], tamY[2]);
-  }
-}
-void miBotonRectangular2() {
-  if ((mouseX> posX[3]) && (mouseX< posX[3] + tamX[3]) && (mouseY> posY[3]) && (mouseY< posY[3] + tamY[3])) {
-    //rect(posX[3], posY[3], tamX[3], tamY[3]);
-  }
+void  miBotonRectangular(float posX, float posY, float tamX, float tamY) {
+  //if ((mouseX> posX) && (mouseX< posX+ tam);
+ if((mouseX> posX) && (mouseX< posX + tamX) && (mouseY> posY) && (mouseY< posY+ tamY)){
+   //rect(posX,posY,tamX,tamY);
+ }
+  //}
 }
